@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Biorobots</title>
+   <link rel="shortcut icon" href="./img/Robots.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="wrapper">
+      <div class="header__wrapper">
+        <div class="header__logo">
+          <a href="/" class="header__logo-link">
+            <img src="./img/svg/header/Logo.svg" alt="logo">
+          </a>
+          <button type="button" onclick="CreateRobot()" id="btn_create_robot_header" disabled name="button" class="header__button">Произвести биоробота</button>
+        </div>
+      </div>
+    </div>
+  </header>
+  <section class="intro">
+    <div class="wrapper">
+      <div class="intro__wrapper">
+        <p>01</p>
+        <div class="intro__title">
+          <p>Фабрика по производству биороботов</p>
+          <h1>класса «монитор-кресло»</h1>
+        </div>
+        <div class="intro__img">
+          <img src="./img/Robots.png" alt="Robots">
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="wallet">
+    <div class="wrapper">
+      <div class="wallet__wrapper">
+        <p>02</p>
+        <div class="wallet__content">
+          <div class="wallet__title">
+            <h1>Кошелёк криптовалют</h1>
+          </div>
+          <div class="coins" id="coins">
+            </div>
+            <h1 id="quantity_coins">0</h1>
+            <p id="biorobo_coins_text">biorobo монет</p>
+            <div class="accumulate">
+              <a id="add_one_coin" onclick="AddOneCoin()">Нацыганить</a>
+              <input type="checkbox" class="accumulate_checkbox" onchange="AddFiveCoin()" id="five_coins" name="five_coins" value="yes">
+              <label for="five_coins">Цыганить по 5 монет</label>
+            </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="market">
+    <div class="wrapper">
+      <div class="market__wrapper">
+        <p>03</p>
+        <div class="market__content">
+            <h1>Рынок комплектующих</h1>
+            <div class="market__components">
+              <div class="market__components__item">
+                <img src="./img/svg/market/Biorouka.svg" alt="Biorouka">
+                <p>Биорука</p>
+                <b>Стоимость: </b>
+                <h1>7 монет</h1>
+                <button type="button" onclick="BuyBiorouka()" disabled id="buy_biorouka" name="button_install" class="btn_install">Установить</button>
+              </div>
+              <div class="market__components__item">
+                <img src="./img/svg/market/Microchip.svg" alt="Microchip">
+                <p>Микрочип</p>
+                <b>Стоимость: </b>
+                <h1>5 монет</h1>
+                <button type="button" onclick="BuyMicrochip()" disabled id="buy_microchip" name="button_install" class="btn_install">Установить</button>
+              </div>
+              <div class="market__components__item">
+                <img src="./img/svg/market/Soul.svg" alt="Soul">
+                <p>Душа</p>
+                <b>Стоимость: </b>
+                <h1>25 монет</h1>
+                <button type="button" onclick="BuySoul()" disabled id="buy_soul" name="button_install" class="btn_install">Установить</button>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="storage">
+    <div class="wrapper">
+      <div class="storage__wrapper">
+        <p>04</p>
+        <div class="storage__content">
+          <h1>Склад</h1>
+          <div class="storage__components">
+            <div class="storage__components__item">
+              <p>Биорука</p>
+              <b>Стоимость: </b>
+              <h1>5 монет</h1>
+              <div class="count__component">
+                <h1 id="count_component_biorouka">0</h1>
+                <h2>шт</h2>
+              </div>
+              <button type="button" onclick="SellBiorouka()" disabled id="sell_biorouka" name="button" class="btn_storage">Продать</button>
+            </div>
+            <div class="storage__components__item">
+              <p>Микрочип</p>
+              <b>Стоимость: </b>
+              <h1>3 монет</h1>
+              <div class="count__component">
+                <h1 id="count_component_microchip">0</h1>
+                <h2>шт</h2>
+              </div>
+              <button type="button" onclick="SellMicrochip()" disabled id="sell_microchip" name="button" class="btn_storage">Продать</button>
+            </div>
+            <div class="storage__components__item">
+              <p>Душа</p>
+              <b>Стоимость: </b>
+              <h1>15 монет</h1>
+              <div class="count__component">
+                <h1 id="count_component_soul">0</h1>
+                <h2>шт</h2>
+              </div>
+              <button type="button" onclick="SellSoul()" disabled id="sell_soul" name="button" class="btn_storage">Продать</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="production">
+    <div class="wrapper">
+      <div class="production__wrapper">
+        <p>05</p>
+        <h1>Производство</h1>
+        <div class="production__content">
+          <div class="production__radio-button_block">
+            <p>Тип биоробота:</p>
+            <div class="radio__FrontEnd">
+              <input class="production__radio" type="radio" onclick="TypeFrontEnd()" checked id="radio-FrontEnd" name="group_type_robot" value="FrontEnd">
+              <label for="radio-FrontEnd">FrontEnd</label>
+            </div>
+            <div class="radio__Design">
+              <input class="production__radio" type="radio" onclick="TypeDesign()" id="radio-Design" name="group_type_robot" value="Design">
+              <label for="radio-Design">Design</label>
+            </div>
+            <p>Cтабилизатор:</p>
+            <div class="radio__Male">
+              <input class="production__radio" type="radio" onclick="GenderMale()" checked id="radio-Male" name="group_gender_robot" value="Male">
+              <label for="radio-Male">Male</label>
+            </div>
+            <div class="radio__Female">
+              <input class="production__radio" type="radio" onclick="GenderFemale()" id="radio-Female" name="group_gender_robot" value="Female">
+              <label for="radio-Female">Female</label>
+            </div>
+          </div>
+          <div class="production__checkbox_block">
+            <div class="checkbox_block_line">
+              <input type="checkbox" id="biorouka-1" onchange="Biorouka_1()" disabled class="production__checkbox__biorouka" name="Biorouka" value="Biorouka-1">
+                <label for="biorouka-1"></label>
+              <input type="checkbox" id="biorouka-2" onchange="Biorouka_2()" disabled class="production__checkbox__biorouka" name="Biorouka" value="Biorouka-2">
+                <label for="biorouka-2"></label>
+              <input type="checkbox" id="biorouka-3" onchange="Biorouka_3()" disabled class="production__checkbox__biorouka" name="Biorouka" value="Biorouka-3">
+                <label for="biorouka-3"></label>
+              <input type="checkbox" id="biorouka-4" onchange="Biorouka_4()" disabled class="production__checkbox__biorouka" name="Biorouka" value="Biorouka-4">
+                <label for="biorouka-4"></label>
+            </div>
+            <div class="checkbox_block_line">
+              <input type="checkbox" id="microchip-1" onchange="Microchip_1()" disabled class="production__checkbox__microchip" name="Microchip" value="Microchip-1">
+                <label for="microchip-1"></label>
+              <input type="checkbox" id="microchip-2" onchange="Microchip_2()" disabled class="production__checkbox__microchip" name="Microchip" value="Microchip-2">
+                <label for="microchip-2"></label>
+              <input type="checkbox" id="microchip-3" onchange="Microchip_3()" disabled class="production__checkbox__microchip" name="Microchip" value="Microchip-3">
+                <label for="microchip-3"></label>
+              <input type="checkbox" id="microchip-4" onchange="Microchip_4()" disabled class="production__checkbox__microchip" name="Microchip" value="Microchip-4">
+                <label for="microchip-4"></label>
+            </div>
+            <div class="checkbox_block_line">
+              <input type="checkbox" id="soul" onchange="Soul()" disabled class="production__checkbox__soul" name="Soul" value="Soul">
+                <label for="soul"></label>
+            </div>
+          </div>
+
+      </div>
+        <div class="create-button__description">
+          <button type="button" onclick="CreateRobot()" disabled id="btn_create_robot_production"  class="header__button" name="button">Произвести за 10 монет</button>
+          <div class="creation_description">
+            <p id="description_text">Для производства биоробота не хватает биомеханизмов, процессоров, души и монет</p>
+          </div>
+          <div class="robot__img" id="robot"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div id="popup_coin" class="popup">
+    <div class="popup__body">
+      <div class="popup__content">
+        <div onclick="PopUpCoinClose()" id="popup_coin_close" class="popup__close"></div>
+        <div class="popup__title">
+          <div class="popup_coin__img">
+            <img src="./img/svg/popUp/Coin.svg" alt="popUp_coin">
+          </div>
+          Количество монет ограничено
+        </div>
+        <div class="popup__text">Вы не можете нацыганить более 100 монет biorobo</div>
+      </div>
+    </div>
+  </div>
+  <div id="popup_create_robot" class="popup">
+    <div class="popup__body">
+      <div class="popup__content">
+        <div onclick="PopUpCreateRobotClose()" id="popup_create_robot_close" class="popup__close"></div>
+        <div class="popup_create_robot__title">
+          Биоробот <br>
+          произведён
+        </div>
+        <div class="popup__text">
+          Поздравляем! <br>
+          Вы произвели биоробота
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="./js/wallet.js"></script>
+  <script src="./js/market.js"></script>
+  <script src="./js/storage.js"></script>
+  <script src="./js/production.js"></script>
+</body>
+</html>
